@@ -1,0 +1,40 @@
+.menu {
+  @apply mb-14 animate-fade;
+  .title {
+    @apply text-gray-500 uppercase font-semibold pl-layout;
+  }
+  .menuList {
+    > li {
+      @apply px-8 border-r-4 border-r-transparent transition-colors;
+
+      a {
+        @apply flex items-center cursor-pointer text-gray-600 px-3 mt-6 hover:text-white;
+
+        > span {
+          @apply ml-3 text-lg hover:text-white;
+        }
+
+        > svg {
+          @apply text-2lg;
+        }
+
+        > svg,
+        > span {
+          @apply transition-colors;
+        }
+      }
+
+      &.activeLink {
+        border-color: var(--primary-color);
+
+        > a > span {
+          @apply text-white;
+        }
+
+        > a > svg {
+          fill: var(--primary-color);
+        }
+      }
+    }
+  }
+}

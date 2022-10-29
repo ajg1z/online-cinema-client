@@ -1,12 +1,12 @@
+import Logo from './Logo';
+import MenuContainer from './Menu/MenuContainer';
 import styles from './Navigation.module.scss';
-import Logo from './components/Logo/Logo';
-import Menu from './components/Menu/Menu';
 
 const Navigation = () => {
   return (
-    <div>
+    <div className={styles.navigation}>
       <Logo />
-      <Menu />
+      <MenuContainer />
     </div>
   );
 };
