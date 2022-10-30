@@ -3,11 +3,11 @@ import * as MaterialIcons from 'react-icons/md';
 
 import { TypeMaterialIconName } from '@/shared/types/icon.types';
 
-interface MaterialIconProps {
+interface IMaterialIconProps {
   name: TypeMaterialIconName;
 }
 
-const MaterialIcon: FC<MaterialIconProps> = ({ name }) => {
+const MaterialIcon: FC<IMaterialIconProps> = ({ name }) => {
   const Component = MaterialIcons[name];
 
   return <Component /> || <MaterialIcons.MdError />;

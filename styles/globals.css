@@ -9,8 +9,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
-
-  @apply bg-gray-900;
+  background-color: var(--bg-color);
+  color: var(--font-color);
 }
 
 a {
@@ -36,6 +36,8 @@ input:focus {
   --primary-color: #e30b13;
   --basic-font: 14px;
   --font-family: 'Open Sans';
+  --font-color: white;
   --white-color: 'white';
   --black-color: 'black';
+  --bg-color: rgb(17 24 39);
 }

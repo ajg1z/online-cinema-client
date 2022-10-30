@@ -1,9 +1,9 @@
 import { FC } from 'react';
 
-import { ILayoutProps } from './Layout.interface';
 import styles from './Layout.module.scss';
-import Navigation from './Navigation/Navigation';
-import Sidebar from './Sidebar/Sidebar';
+import { ILayoutProps } from './layout.types';
+import Navigation from './navigation/Navigation';
+import Sidebar from './sidebar/Sidebar';
 
 const Layout: FC<ILayoutProps> = ({ children }) => {
   return (

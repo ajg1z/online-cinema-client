@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { FC } from 'react';
 
-import MaterialIcon from '@/components/ui/MaterialIcon';
+import MaterialIcon from '@/components/ui/material-icon/MaterialIcon';
 
 import { IMenuItem } from '../../menu.types';
 

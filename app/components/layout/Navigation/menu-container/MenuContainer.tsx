@@ -1,16 +1,16 @@
 import { FC } from 'react';
 
-import styles from './Menu.module.scss';
-import Menu from './components/Menu/Menu';
+import GenreMenu from './components/genres/GenreMenu';
+import Menu from './components/menu/Menu';
 import { firstMenu, userMenu } from './constans';
 
 const MenuContainer: FC = () => {
   return (
-    <div>
+    <>
       <Menu menu={firstMenu} />
-      {/* Genres menu */}
+      <GenreMenu />
       <Menu menu={userMenu} />
-    </div>
+    </>
   );
 };
 

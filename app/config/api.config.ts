@@ -1,25 +1,25 @@
-export const API_URL = `${process.env.APP_URL}/api`;
+export const API_URL = `${process.env.NEXT_PUBLIC_BACKEND_URL}/api`;
 
 export const Url = {
-  genre(path: string) {
-    return `/genre/${path}`;
+  genre(path?: string) {
+    return `/genre/${path || ''}`;
   },
   user(path: string) {
-    return `/user/${path}`;
+    return `/user/${path || ''}`;
   },
   auth(path: string) {
-    return `/auth/${path}`;
+    return `/auth/${path || ''}`;
   },
-  movie(path: string) {
-    return `/movie/${path}`;
+  movie(path?: string) {
+    return `/movie/${path || ''}`;
   },
   actor(path: string) {
-    return `/actor/${path}`;
+    return `/actor/${path || ''}`;
   },
   rating(path: string) {
-    return `/rating/${path}`;
+    return `/rating/${path || ''}`;
   },
   file(path: string) {
-    return `/file/${path}`;
+    return `/file/${path || ''}`;
   },
 };

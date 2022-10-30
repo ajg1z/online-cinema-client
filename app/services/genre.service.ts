@@ -2,12 +2,12 @@ import { axiosClassic } from 'api/interceptors';
 
 import { Url } from '@/config/api.config';
 
-import { IGenre } from '@/shared/types/genre.types';
+import { IGenre } from '@/shared/types/movie.types';
 
 export const genreService = {
-  async getPopularGenres(limit: number = 4) {
-    return axiosClassic.get<IGenre[]>(Url.genre('/popular'), {
-      params: { limit },
+  async getAll(params?: string) {
+    return axiosClassic.get<IGenre[]>(Url.genre(), {
+      params: { q: params },
     });
   },
 };
