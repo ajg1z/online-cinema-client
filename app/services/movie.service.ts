@@ -10,6 +10,14 @@ export const movieService = {
       params: { query },
     });
   },
+
+  async getPopular() {
+    const { data } = await axiosClassic.get<IMovie[]>(
+      Url.movie('most-popular'),
+    );
+
+    return data;
+  },
 };
 
 export default movieService;

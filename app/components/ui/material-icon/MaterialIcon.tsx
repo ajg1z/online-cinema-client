@@ -8,9 +8,11 @@ interface IMaterialIconProps {
 }
 
 const MaterialIcon: FC<IMaterialIconProps> = ({ name }) => {
+  if (!name) return <></>;
+
   const Component = MaterialIcons[name];
 
-  return <Component /> || <MaterialIcons.MdError />;
+  return Component ? <Component /> : <MaterialIcons.MdError />;
 };
 
 export default MaterialIcon;

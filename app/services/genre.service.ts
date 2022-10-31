@@ -10,6 +10,10 @@ export const genreService = {
       params: { q: params },
     });
   },
+
+  async getPopular() {
+    return axiosClassic.get<IGenre[]>(Url.genre('popular'));
+  },
 };
 
 export default genreService;

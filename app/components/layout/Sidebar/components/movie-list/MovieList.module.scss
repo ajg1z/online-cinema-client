@@ -1,0 +1,25 @@
+.container {
+  @apply mt-11 animate-fade;
+}
+
+.title {
+  @apply font-bold text-xl mb-5 capitalize;
+}
+
+.movieItem {
+  @apply mb-4 flex gap-4;
+  > a {
+    img {
+      @apply rounded-lg transition-colors border border-transparent border-solid;
+
+      &:hover {
+        border-color: var(--primary-color);
+      }
+    }
+  }
+}
+
+.info {
+  @apply flex flex-col justify-between;
+  width: 67%;
+}
