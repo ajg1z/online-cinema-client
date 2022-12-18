@@ -1,0 +1,26 @@
+.nav {
+  @apply air-block mx-auto w-4/5 mb-10 bg-black;
+  > ul {
+    @apply flex justify-evenly items-center;
+
+    > li {
+      @apply inline-block;
+
+      > a {
+        @apply text-opacity-60 block px-5 py-2 text-lg transition-colors relative text-white hover:text-opacity-100;
+        &::before {
+          @apply absolute h-0.5 w-full bg-transparent transition-colors left-0 bottom-0 rounded-md;
+          content: '';
+        }
+
+        &.active {
+          @apply text-opacity-100;
+
+          &::before {
+            @apply bg-red-500;
+          }
+        }
+      }
+    }
+  }
+}

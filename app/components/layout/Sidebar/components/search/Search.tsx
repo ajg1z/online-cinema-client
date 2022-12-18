@@ -10,6 +10,7 @@ import useSearch from './useSearch';
 
 const Search = () => {
   const { data, handleChange, isSuccess, searchTerm } = useSearch();
+
   return (
     <div className={styles.search}>
       <SearchField handleChange={handleChange} value={searchTerm} />

@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { toastr } from 'react-redux-toastr';
 
 import Meta from '@/utils/meta/Meta';
 
@@ -16,6 +17,12 @@ const Home: FC<IHome> = () => {
         <Heading className='text-gray-500 mb-8 text-xl'>
           Watch movie online
         </Heading>
+        <button
+          className='text-red-300 text-lg p-4 bg-slate-50'
+          onClick={() => toastr.message('error', `text`)}
+        >
+          Click
+        </button>
       </Meta>
     </>
   );

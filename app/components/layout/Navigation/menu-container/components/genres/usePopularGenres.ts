@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 
-import { pages } from '@/config/url.config';
+import { PAGES_URL } from '@/config/url.config';
 
 import { genreService } from './../../../../../../services/genre.service';
 
@@ -13,7 +13,7 @@ export const usePopularGenres = () => {
         return data.map((genre) => ({
           title: genre.name,
           icon: genre.icon,
-          link: pages.genre(genre.slug),
+          link: PAGES_URL.genre(genre.slug),
         }));
       },
     },

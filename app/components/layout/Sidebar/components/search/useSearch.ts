@@ -7,6 +7,7 @@ import useDebounce from '@/hooks/useDebounce';
 
 const useSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
+
   const debouncedSearch = useDebounce(searchTerm, 500);
 
   const { data, isSuccess } = useQuery(

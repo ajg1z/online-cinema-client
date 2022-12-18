@@ -16,7 +16,7 @@ const PopularMovies = () => {
   if (isLoading)
     return (
       <div className='mt-11'>
-        <SkeletonLoader count={3} className='h-28 mb-4' />
+        <SkeletonLoader count={3} className='h-24 mb-4' />
       </div>
     );
 

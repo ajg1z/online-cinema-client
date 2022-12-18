@@ -7,7 +7,7 @@
 }
 
 .movieItem {
-  @apply mb-4 flex gap-4;
+  @apply mb-4 flex gap-4 items-stretch;
   > a {
     img {
       @apply rounded-lg transition-colors border border-transparent border-solid;
@@ -22,4 +22,29 @@
 .info {
   @apply flex flex-col justify-between;
   width: 67%;
+  .title {
+    @apply text-base mb-1 truncate font-medium;
+  }
+
+  .genres {
+    > li {
+      @apply text-sm text-gray-600  lowercase;
+    }
+  }
+
+  .rating {
+    @apply flex items-center gap-1;
+
+    > svg {
+      @apply fill-yellow-700 text-lg;
+    }
+
+    > span {
+      @apply font-medium;
+    }
+  }
+}
+
+.btn {
+  @apply btn-primary py-2 w-full block text-center rounded-lg mb-4 font-bold text-base;
 }
