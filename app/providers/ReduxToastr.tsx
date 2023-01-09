@@ -4,7 +4,7 @@ import ReduxToastrLib from 'react-redux-toastr';
 const ReduxToastr = () => {
   return (
     <ReduxToastrLib
-      position='bottom-right'
+      position='top-right'
       preventDuplicates
       progressBar
       newestOnTop

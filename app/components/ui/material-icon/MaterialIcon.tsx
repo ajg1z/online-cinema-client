@@ -3,16 +3,21 @@ import * as MaterialIcons from 'react-icons/md';
 
 import { TypeMaterialIconName } from '@/shared/types/icon.types';
 
+import { useRenderClient } from '@/hooks/useRenderClient';
+
 interface IMaterialIconProps {
   name: TypeMaterialIconName;
 }
 
 const MaterialIcon: FC<IMaterialIconProps> = ({ name }) => {
-  if (!name) return <></>;
+  const { isRenderClient } = useRenderClient();
 
   const Component = MaterialIcons[name];
 
-  return Component ? <Component /> : <MaterialIcons.MdError />;
+  if (isRenderClient)
+    return Component ? <Component /> : <MaterialIcons.MdError />;
+
+  return null;
 };
 
 export default MaterialIcon;

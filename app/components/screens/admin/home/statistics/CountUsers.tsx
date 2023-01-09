@@ -2,7 +2,7 @@ import cn from 'classnames';
 import React from 'react';
 import { useQuery } from 'react-query';
 
-import { adminService } from '@/services/admin.service';
+import { AdminService } from '@/services/admin.service';
 
 import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader';
 
@@ -11,7 +11,7 @@ import styles from '../Admin.module.scss';
 const CountUsers = () => {
   const { isLoading, data: response } = useQuery(
     `count-users`,
-    adminService.getCountUsers,
+    AdminService.getCountUsers,
   );
 
   return (

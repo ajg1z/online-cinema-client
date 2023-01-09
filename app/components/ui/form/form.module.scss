@@ -1,9 +1,9 @@
 .button {
-  @aplly btn-primary;
+  @apply btn-primary;
 }
 
 .common {
-  @apply relative border-b border-gray-600 transition-colors focus-within:border-red-500 ;
+  @apply relative border-b border-gray-600 transition-colors focus-within:border-red-500;
   > label {
     @apply block;
 
@@ -23,4 +23,88 @@
   input {
     @apply outline-border-none focus:ring-0 bg-transparent text-gray-500 w-full m-0 px-0;
   }
+}
+
+.editorWrapper {
+  @apply border-0;
+
+  .wrapper {
+    .editor {
+      @apply h-96 border rounded-b-lg border-gray-700 px-4 overflow-hidden;
+    }
+
+    .toolbar {
+      @apply mt-3 outline-border-none rounded-t-lg mb-0 bg-gray-600 opacity-40 p-3 text-white;
+
+      > div {
+        @apply m-0;
+
+        > div {
+          @apply outline-border-none shadow-none transition-colors border-gray-500 bg-gray-500 hover:bg-gray-300 mx-1.5;
+        }
+      }
+    }
+  }
+}
+
+.uploadField {
+  @apply relative;
+
+  .uploadWrapper {
+    @apply flex justify-between;
+
+    > .previewImage {
+      @apply shrink-0 relative w-36 h-36 flex justify-center items-center relative;
+
+      .progress {
+        @apply absolute z-3 left-1/2 top-1/2;
+        transform: translate(-50%, -50%);
+      }
+
+      img {
+        @apply rounded-md w-full h-full object-cover object-center;
+      }
+
+      > span {
+        @apply animate-fade;
+      }
+    }
+
+    .uploadBody {
+      @apply block;
+
+      .selectorImage {
+        @apply bg-red-700 px-2 py-1 rounded-md;
+      }
+
+      .error {
+        @apply relative -bottom-3;
+      }
+
+      > span {
+        @apply text-xs uppercase text-gray-600 block mb-3;
+      }
+
+      > input {
+        @apply block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-red-500 opacity-70 file:text-white transition-opacity;
+        display: none;
+      }
+
+      &:hover > input {
+        @apply opacity-100;
+      }
+    }
+  }
+}
+
+.fullScreenWrapper {
+  @apply w-full h-full flex justify-center items-center relative;
+
+  > button {
+    @apply absolute top-1 right-0 z-3 text-lg text-red-600;
+  }
+}
+
+.nameFile {
+  @apply text-sm mt-2;
 }

@@ -3,6 +3,7 @@ export const PAGES_URL = {
   actor: (slug: string) => `/actor/${slug}`,
   genre: (slug: string) => `/genre/${slug}`,
   admin: (url?: string) => `/manage${url ? `/${url}` : ''}`,
-  auth: () => `/auth`,
+  auth: (param?: string) => `/auth${param ?? ``}`,
+  favorites: () => `/favorites`,
   404: () => `/404`,
 };

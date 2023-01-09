@@ -4,3 +4,5 @@ export interface IUser {
   createdAt: string;
   isAdmin: boolean;
 }
+
+export type UserRole = `admin` | `user`;

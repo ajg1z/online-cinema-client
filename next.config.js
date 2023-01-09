@@ -2,7 +2,7 @@
 const nextConfig = {
   poweredByHeader: false,
   optimizeFonts: false,
-
+  
   async rewrites() {
     return [
       {

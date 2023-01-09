@@ -88,6 +88,8 @@ module.exports = {
           '&:hover': {
             backgroundColor: '#ff0009',
           },
+          padding: `5px 10px`,
+          borderRadius: 5,
         },
         '.text-link': {
           textUnderlineOffset: 4,
@@ -101,7 +103,7 @@ module.exports = {
         },
         '.air-block': {
           borderRadius: theme('borderRadius.layout'),
-          backgroundColor: theme('colors.black'),
+          backgroundColor: theme('colors.gray[950]'),
           color: theme('colors.white'),
           boxShadow: theme('boxShadow.lg'),
         },

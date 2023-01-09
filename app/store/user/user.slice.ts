@@ -1,8 +1,10 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 import { USER_STORAGE } from '@/config/constans';
 
 import { getStoreLocal } from '@/utils/local-storage';
+
+import { IUser } from '@/shared/types/user.types';
 
 import { checkAuth, login, logout, register } from './user.actions';
 import { IInitialState } from './user.types';
@@ -15,7 +17,14 @@ const initialState: IInitialState = {
 export const userSlice = createSlice({
   name: `user`,
   initialState,
-  reducers: {},
+  reducers: {
+    updateUser(state, action: PayloadAction<Partial<IUser>>) {
+      if (!state.user) return;
+
+      if (action.payload.email) state.user.email = action.payload.email;
+      if (action.payload.isAdmin) state.user.isAdmin = action.payload.isAdmin;
+    },
+  },
   extraReducers: (builder) => {
     // * register
     builder.addCase(register.pending, (state) => {
@@ -60,3 +69,5 @@ export const userSlice = createSlice({
 });
 
 export const { reducer } = userSlice;
+
+export const userActions = userSlice.actions;

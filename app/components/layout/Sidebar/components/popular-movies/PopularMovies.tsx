@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery } from 'react-query';
 
-import movieService from '@/services/movie.service';
+import MovieService from '@/services/movie/movie.service';
 
 import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader';
 
@@ -10,7 +10,12 @@ import MovieList from '../movie-list/MovieList';
 const PopularMovies = () => {
   const { isLoading, data } = useQuery(
     'popular movies in sidebar',
-    movieService.getPopular,
+    MovieService.getPopular,
+    {
+      select(data) {
+        return data.length ? data.slice(0, 5) : [];
+      },
+    },
   );
 
   if (isLoading)

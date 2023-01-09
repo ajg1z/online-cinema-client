@@ -1,0 +1,32 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  svg {
+    font-size: 30px;
+  }
+  gap: 20px;
+}
+
+.sortBlock {
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+
+.sortElem {
+  position: relative;
+  cursor: pointer;
+}
+
+.activeSort {
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: white;
+  }
+}

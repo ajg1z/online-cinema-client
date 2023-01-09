@@ -11,7 +11,7 @@ import {
 } from './../../store/user/user.types';
 import { removeUserFromStorage, saveToStorage } from './auth.helper';
 
-export const authService = {
+export const AuthService = {
   async register(payload: IUserInputOptions) {
     const response = await axiosClassic.post<IAuthResponse>(
       API_URL.auth(`register`),

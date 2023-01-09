@@ -4,6 +4,8 @@ import { FC } from 'react';
 
 import { PAGES_URL } from '@/config/url.config';
 
+import NotFoundImg from '@/assets/images/notFoundImg.jpg';
+
 import { IMovie } from '@/shared/types/movie.types';
 
 import styles from './SearchList.module.scss';
@@ -17,7 +19,7 @@ const SearchList: FC<ISearchListProps> = ({ movies = [] }) => {
     return (
       <Link href={PAGES_URL.movie(movie.slug)} key={movie._id}>
         <Image
-          src={movie.poster}
+          src={movie.poster || NotFoundImg}
           width={50}
           height={50}
           alt={movie.title}

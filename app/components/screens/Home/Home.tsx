@@ -3,26 +3,30 @@ import { toastr } from 'react-redux-toastr';
 
 import Meta from '@/utils/meta/Meta';
 
+import { Gallery } from '@/components/ui/gallery/Gallery';
 import Heading from '@/components/ui/heading/Heading';
+import Slider from '@/components/ui/slider/Slider';
 
 import { IHome } from './home.types';
 
-const Home: FC<IHome> = () => {
+const Home: FC<IHome> = ({ slides, actors, trendingMovies }) => {
   return (
     <>
       <Meta
         title='Watch movie online'
         description='Watch MovieApp movies and TV shows online or stream right to your browser'
       >
-        <Heading className='text-gray-500 mb-8 text-xl'>
-          Watch movie online
-        </Heading>
-        <button
-          className='text-red-300 text-lg p-4 bg-slate-50'
-          onClick={() => toastr.message('error', `text`)}
-        >
-          Click
-        </button>
+        {slides.length && <Slider slides={slides} />}
+
+        <div className='my-10'>
+          <Heading>Trending now</Heading>
+          {trendingMovies.length && <Gallery items={trendingMovies} />}
+        </div>
+
+        <div className='my-10'>
+          <Heading>Best actors</Heading>
+          {actors.length && <Gallery items={actors} />}
+        </div>
       </Meta>
     </>
   );

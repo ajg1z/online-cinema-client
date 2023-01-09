@@ -1,8 +1,7 @@
 import type { AppProps } from 'next/app';
 import MainProvider from 'providers/MainProvider';
-import 'react-redux-toastr/lib/css/react-redux-toastr.min.css';
 
-import '@/assets/styles/globals.css';
+import '@/assets/styles/globals.scss';
 
 import { TypeComponentAuthFields } from '@/shared/types/auth.types';
 

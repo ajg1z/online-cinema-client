@@ -1,3 +1,4 @@
+import { IFile } from './file.types';
 import { TypeMaterialIconName } from './icon.types';
 
 export interface IGenre {

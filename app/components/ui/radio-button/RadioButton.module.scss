@@ -1,0 +1,42 @@
+.container {
+  cursor: pointer;
+}
+
+.input {
+  display: none;
+}
+
+.check {
+  position: relative;
+  top: -1px;
+
+  display: inline-block;
+  display: inline-flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+
+  width: 15px;
+  height: 15px;
+  padding: 0.5px;
+
+  border: 1px solid white;
+  border-radius: 50%;
+}
+
+.text {
+  padding-left: 5px;
+}
+
+.checked {
+  width: 70%;
+  height: 70%;
+
+  transition: all 0.2s;
+
+  border-radius: 50%;
+}
+
+.active {
+  background-color: var(--primary-color);
+}

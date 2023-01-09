@@ -1,5 +1,7 @@
-import * as usersActions from './user/user.actions';
+import * as usersAsyncActions from './user/user.actions';
+import { userActions } from './user/user.slice';
 
 export const allActions = {
-  ...usersActions,
+  ...usersAsyncActions,
+  ...userActions,
 };

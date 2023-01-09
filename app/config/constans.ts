@@ -7,3 +7,4 @@ export const IsClient = typeof window !== `undefined`;
 export const REFRESH_TOKEN = `refresh-token`;
 export const ACCESS_TOKEN = `access-token`;
 export const USER_STORAGE = `user`;
+export const IS_PRODUCTION = process.env.NEXT_PUBLIC_DEV === 'production';

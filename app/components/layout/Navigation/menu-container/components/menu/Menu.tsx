@@ -1,10 +1,14 @@
+import dynamic from 'next/dynamic';
 import React, { FC } from 'react';
 
 import { IMenuProps } from '../../menu.types';
-import AuthItems from '../auth/AuthItems';
 
 import styles from './Menu.module.scss';
 import MenuItem from './MenuItem';
+
+const DynamicAuthItems = dynamic(() => import('../auth/AuthItems'), {
+  ssr: false,
+});
 
 const Menu: FC<IMenuProps> = ({ menu }) => {
   return (
@@ -21,7 +25,7 @@ const Menu: FC<IMenuProps> = ({ menu }) => {
             />
           );
         })}
-        {menu.id === 2 ? <AuthItems /> : null}
+        {menu.id === 2 ? <DynamicAuthItems /> : null}
       </ul>
     </div>
   );

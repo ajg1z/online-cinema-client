@@ -1,0 +1,15 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 5px;
+
+  > button {
+    font-size: 30px;
+  }
+}
+
+.disabled {
+  opacity: 0.5;
+}

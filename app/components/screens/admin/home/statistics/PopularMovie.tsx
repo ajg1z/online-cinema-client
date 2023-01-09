@@ -6,7 +6,9 @@ import { useQuery } from 'react-query';
 
 import { PAGES_URL } from '@/config/url.config';
 
-import movieService from '@/services/movie.service';
+import NotFoundImg from '@/assets/images/notFoundImg.jpg';
+
+import MovieService from '@/services/movie/movie.service';
 
 import SubHeading from '@/components/ui/heading/SubHeading';
 import SkeletonLoader from '@/components/ui/skeleton-loader/SkeletonLoader';
@@ -16,7 +18,7 @@ import styles from '../Admin.module.scss';
 const PopularMovie = () => {
   const { isLoading, data } = useQuery(
     `most popular movie`,
-    movieService.getPopular,
+    MovieService.getPopular,
     {
       select: (data) => data[0],
     },
@@ -32,7 +34,7 @@ const PopularMovie = () => {
           className={styles.image}
           unoptimized
           alt={data.slug}
-          src={data.bigPoster}
+          src={data.bigPoster || NotFoundImg}
         />
       </Link>
     </>

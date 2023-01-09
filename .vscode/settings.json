@@ -3,8 +3,14 @@
     "внутри",
     "папки",
     "снаружи",
+    "bttn",
+    "constans",
+    "draftjs",
+    "plyr",
+    "sortabljs",
     "tailwindcss",
     "Toastr",
-    "trivago"
+    "trivago",
+    "unoptimized"
   ]
 }

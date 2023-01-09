@@ -6,7 +6,7 @@ import { JWT_EXPIRED } from '@/config/api.config';
 
 import { toastError } from '@/utils/toast-error';
 
-import { authService } from '@/services/auth/auth.service';
+import { AuthService } from '@/services/auth/auth.service';
 
 import { IAuthResponse, IUserInputOptions } from './user.types';
 
@@ -14,7 +14,7 @@ export const register = createAsyncThunk<IAuthResponse, IUserInputOptions>(
   `auth/register`,
   async (payload, thunkAPI) => {
     try {
-      const { data } = await authService.register(payload);
+      const { data } = await AuthService.register(payload);
       toastr.success(`Registration`, `Success Registration ✌️`);
       return data;
     } catch (e) {
@@ -28,7 +28,7 @@ export const login = createAsyncThunk<IAuthResponse, IUserInputOptions>(
   `auth/login`,
   async (payload, thunkAPI) => {
     try {
-      const { data } = await authService.login(payload);
+      const { data } = await AuthService.login(payload);
       toastr.success(`Login`, `Success Login ✌️`);
       return data;
     } catch (e) {
@@ -39,14 +39,14 @@ export const login = createAsyncThunk<IAuthResponse, IUserInputOptions>(
 );
 
 export const logout = createAsyncThunk(`auth/logout`, async () => {
-  authService.logout();
+  AuthService.logout();
 });
 
 export const checkAuth = createAsyncThunk(
   `auth/check-auth`,
   async (_, thunkAPI) => {
     try {
-      const { data } = await authService.getNewTokens();
+      const { data } = await AuthService.getNewTokens();
       return data;
     } catch (e) {
       if (errorCatch(e) === JWT_EXPIRED) {

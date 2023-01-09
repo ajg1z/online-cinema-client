@@ -1,0 +1,42 @@
+.modal {
+  background-color: var(--bg-color);
+  border: 1px solid var(--primary-color);
+}
+
+.body {
+  padding: 0 10px;
+}
+
+.footer {
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+  > button {
+    @apply btn-primary;
+  }
+}
+
+.header {
+  padding: 10px;
+  border-bottom: 1px solid var(--primary-color);
+  position: relative;
+  min-height: 10px;
+}
+
+.title {
+  text-transform: uppercase;
+  width: 90%;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.closeIcon {
+  color: red;
+  font-size: 25px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

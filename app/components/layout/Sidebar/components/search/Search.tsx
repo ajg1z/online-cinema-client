@@ -1,7 +1,3 @@
-import { useEffect, useState } from 'react';
-
-import useDebounce from '@/hooks/useDebounce';
-
 import SearchField from '@/components/ui/search-field/SearchField';
 
 import styles from './Search.module.scss';

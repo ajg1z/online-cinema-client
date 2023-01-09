@@ -1,0 +1,19 @@
+.row {
+  display: grid;
+  align-items: top;
+  margin-bottom: 10px;
+  border: 1px solid var(--primary-color);
+  border-radius: 35px;
+  padding: 10px 15px;
+  background-color: rgba(85, 0, 0, 0.2);
+}
+
+.enterRow {
+  opacity: 0;
+  height: 0;
+}
+
+.exitRow {
+  opacity: 1;
+}
+

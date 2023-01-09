@@ -1,71 +1,60 @@
-import React, { ChangeEvent, useMemo } from 'react';
+import { useRouter } from 'next/router';
+import { useMemo } from 'react';
 import { useMutation, useQuery } from 'react-query';
 import { toastr } from 'react-redux-toastr';
 
 import { PAGES_URL } from '@/config/url.config';
 
-import { parseClientDate } from '@/utils/date';
 import { toastError } from '@/utils/toast-error';
 
-import { DISCRETENESS } from '@/shared/types/date.types';
+import GenreService from '@/services/genre/genre.service';
 
-import genreService from '@/services/genre.service';
+import { IGenreTableDataRow } from '@/components/ui/admin-table/table/admin-table.types';
 
-import useDebounce from '@/hooks/useDebounce';
-
-import {
-  IGenreTableDataRow,
-  ITableItem,
-  IUserTableDataRow,
-} from '@/components/ui/admin-table/table/admin-table.types';
-
-import { userService } from '../../../../services/user.service';
-import { convertMongoDate, formatDate } from '../../../../utils/date/index';
+import { IGenreEditForm } from '../genre/genre-edit.types';
 
 const useGenres = () => {
-  const [searchTerm, setSearchTerm] = React.useState(``);
-  const debouncedSearch = useDebounce(searchTerm, 500);
-
-  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
-  };
-
-  const queryData = useQuery(
-    [`fetchGenres`, debouncedSearch],
-    () => genreService.getAll(debouncedSearch),
-    {
-      select: ({ data }) =>
-        data.map(
-          (genre): IGenreTableDataRow => ({
-            action: {
-              editUrl: PAGES_URL.admin(`genre/edit/${genre._id}`),
-              id: genre._id,
-            },
-            name: genre.name,
-            slug: genre.slug,
-            description: genre.description,
+  const queryData = useQuery(`fetchGenres`, () => GenreService.getAll(), {
+    select: ({ data }) =>
+      data.map(
+        (genre): IGenreTableDataRow => ({
+          action: {
+            editUrl: PAGES_URL.admin(`genre/edit/${genre._id}`),
             id: genre._id,
-          }),
-        ),
-      onError: (error) => {
-        toastError(error, `genre list`);
-      },
+          },
+          name: genre.name,
+          slug: genre.slug,
+          description: genre.description,
+          id: genre._id,
+        }),
+      ),
+    onError: (error) => {
+      toastError(error, `genre list`);
     },
-  );
+  });
 
   const { mutateAsync: deleteGenre } = useMutation(
     `delete genre`,
-    (userId: string) => userService.deleteOne(userId),
+    (userId: string) => GenreService.deleteOne(userId),
     {
       onError: (error) => {
         toastError(error, `delete genre`);
       },
 
-      onSuccess: (response) => {
-        if (response.data.status) {
-          toastr.success(`Delete genre`, `delete was successful`);
-          queryData.refetch();
-        }
+      onSuccess: () => {
+        toastr.success(`Delete genre`, `delete was successful`);
+        queryData.refetch();
+      },
+    },
+  );
+
+  const { mutateAsync: createGenre } = useMutation(
+    `create genre`,
+    (payload: IGenreEditForm) => GenreService.create(payload),
+    {
+      onSuccess: () => {
+        toastr.success(`Create genre`, `create was successful`);
+        queryData.refetch();
       },
     },
   );
@@ -73,11 +62,10 @@ const useGenres = () => {
   return useMemo(
     () => ({
       ...queryData,
-      handleSearch,
-      searchTerm,
       deleteGenre,
+      createGenre,
     }),
-    [queryData, searchTerm, deleteGenre],
+    [queryData, deleteGenre, createGenre],
   );
 };
 

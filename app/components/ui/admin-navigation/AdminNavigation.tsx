@@ -1,4 +1,4 @@
-import React from 'react';
+import { memo } from 'react';
 
 import AdminNavItem from './AdminNavItem';
 import styles from './AdminNavigation.module.scss';
@@ -16,4 +16,4 @@ const AdminNavigation = () => {
   );
 };
 
-export default AdminNavigation;
+export default memo(AdminNavigation);

@@ -4,6 +4,8 @@ import { FC } from 'react';
 
 import { PAGES_URL } from '@/config/url.config';
 
+import NotFoundImg from '@/assets/images/notFoundImg.jpg';
+
 import { getGenresListEach } from '@/utils/movie/helpers';
 
 import { IMovie } from '@/shared/types/movie.types';
@@ -26,7 +28,13 @@ const MovieElem: FC<IMovie> = ({ title, rating, poster, slug, genres }) => {
   return (
     <div className={styles.movieItem}>
       <Link href={PAGES_URL.movie(slug)}>
-        <Image width={65} height={97} alt={title} src={poster} priority />
+        <Image
+          width={65}
+          height={97}
+          alt={title}
+          src={poster || NotFoundImg}
+          priority
+        />
       </Link>
 
       <div className={styles.info}>

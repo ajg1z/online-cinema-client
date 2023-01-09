@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { NextPageAuth } from '@/shared/types/auth.types';
 
 import Admin from '@/components/screens/admin/home/Admin';

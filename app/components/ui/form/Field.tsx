@@ -2,11 +2,18 @@ import cn from 'classnames';
 import { ForwardedRef, forwardRef } from 'react';
 
 import styles from './form.module.scss';
-import { IFieldProps } from './form.types';
+import { IInputProps } from './form.types';
 
-const Field = forwardRef<HTMLInputElement, IFieldProps>(
+const Field = forwardRef<HTMLInputElement, IInputProps>(
   (
-    { placeholder, error, containerStyle, type, ...params }: IFieldProps,
+    {
+      placeholder,
+      error,
+      containerStyle,
+      type,
+      isNumber,
+      ...params
+    }: IInputProps,
     ref: ForwardedRef<HTMLInputElement>,
   ) => {
     return (

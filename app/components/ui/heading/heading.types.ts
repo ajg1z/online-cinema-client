@@ -5,3 +5,8 @@ export interface IHeadingProps
     HTMLAttributes<HTMLHeadingElement>,
     HTMLHeadingElement
   > {}
+
+export interface IDescriptionProps {
+  className?: string;
+  text: string;
+}

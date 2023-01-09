@@ -1,0 +1,25 @@
+.form {
+  @apply mt-12;
+
+  .fields {
+    @apply flex items-center flex-wrap justify-between;
+
+    > div {
+      width: 31%;
+    }
+  }
+
+  > button {
+    @apply mt-5 block ml-auto;
+    cursor: pointer;
+  }
+}
+
+.radioButtons {
+  @apply inline-flex flex-col justify-center;
+}
+
+.submit:disabled {
+  cursor: auto;
+  opacity: 0.5;
+}

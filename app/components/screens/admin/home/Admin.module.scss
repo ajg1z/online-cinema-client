@@ -2,7 +2,7 @@
   @apply flex flex-wrap mt-10 items-stretch justify-between;
 
   .block {
-    @apply air-block w-2/5;
+    @apply air-block w-2/5 bg-black;
   }
 
   .countUsers {

@@ -1,57 +1,45 @@
-import React, { ChangeEvent, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { useMutation, useQuery } from 'react-query';
 import { toastr } from 'react-redux-toastr';
 
 import { PAGES_URL } from '@/config/url.config';
 
-import { parseClientDate } from '@/utils/date';
 import { toastError } from '@/utils/toast-error';
 
-import { DISCRETENESS } from '@/shared/types/date.types';
+import { IUserTableDataRow } from '@/components/ui/admin-table/table/admin-table.types';
 
-import useDebounce from '@/hooks/useDebounce';
+import { UserService } from '../../../../services/user/user.service';
 
-import {
-  ITableItem,
-  IUserTableDataRow,
-} from '@/components/ui/admin-table/table/admin-table.types';
-
-import { userService } from './../../../../services/user.service';
-import { convertMongoDate, formatDate } from './../../../../utils/date/index';
+import { useTypedSelector } from './../../../../hooks/useTypedSelector';
+import { selectUser } from './../../../../store/user/selectors';
+import { convertMongoDate } from './../../../../utils/date/index';
 
 const useUsers = () => {
-  const [searchTerm, setSearchTerm] = React.useState(``);
-  const debouncedSearch = useDebounce(searchTerm, 500);
-
-  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
-  };
-
-  const queryData = useQuery(
-    [`fetchUsers`, debouncedSearch],
-    () => userService.getAll(debouncedSearch),
-    {
-      select: ({ data }) =>
-        data.map(
+  const user = useTypedSelector(selectUser);
+  const queryData = useQuery(`fetchUsers`, () => UserService.getAll(), {
+    select: ({ data }) =>
+      data
+        .filter((el) => el._id !== user?._id)
+        .map(
           (user): IUserTableDataRow => ({
             action: {
               editUrl: PAGES_URL.admin(`user/edit/${user._id}`),
               id: user._id,
             },
             email: user.email,
+            isAdmin: user.isAdmin,
             id: user._id,
             dateRegister: convertMongoDate(user.createdAt),
           }),
         ),
-      onError: (error) => {
-        toastError(error, `user list`);
-      },
+    onError: (error) => {
+      toastError(error, `user list`);
     },
-  );
+  });
 
   const { mutateAsync: deleteUser } = useMutation(
     `delete user`,
-    (userId: string) => userService.deleteOne(userId),
+    (userId: string) => UserService.deleteOne(userId),
     {
       onError: (error) => {
         toastError(error, `delete user`);
@@ -69,11 +57,9 @@ const useUsers = () => {
   return useMemo(
     () => ({
       ...queryData,
-      handleSearch,
-      searchTerm,
       deleteUser,
     }),
-    [queryData, searchTerm, deleteUser],
+    [queryData, deleteUser],
   );
 };
 
