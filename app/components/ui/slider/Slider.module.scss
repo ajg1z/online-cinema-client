@@ -7,7 +7,7 @@
   .slide {
     @apply relative h-80 rounded-3xl overflow-hidden shadow-xl flex items-end;
 
-    @include fade-bg-gradient();
+    @include fade-bg-gradient(5deg);
 
     .image {
       @apply image-like-bg;
@@ -21,11 +21,11 @@
       }
 
       .subTitle {
-        @apply text-gray-300 font-medium uppercase mb-4 text-shadow;
+        @apply text-gray-300 font-medium uppercase  text-shadow;
       }
 
       .button {
-        @apply btn-primary p-2 px-10;
+        @apply btn-primary p-2 px-10 mt-4;
       }
     }
   }

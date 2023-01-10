@@ -18,7 +18,6 @@ const TextEditor: FC<ITextEditorProps> = ({
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
 
   const [isUpdated, setIsUpdated] = useState(false);
-  const textEditorRef = useRef<LegacyRef<Editor> | null>(null);
 
   useEffect(() => {
     try {

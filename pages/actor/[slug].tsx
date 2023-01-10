@@ -61,7 +61,7 @@ export const getStaticProps: GetStaticProps<IActorPageProps> = async ({
       },
     };
   } catch (e) {
-    console.log(errorCatch(e));
+    console.warn(errorCatch(e));
 
     return {
       notFound: true,

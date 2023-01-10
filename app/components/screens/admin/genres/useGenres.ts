@@ -9,7 +9,7 @@ import { toastError } from '@/utils/toast-error';
 
 import GenreService from '@/services/genre/genre.service';
 
-import { IGenreTableDataRow } from '@/components/ui/admin-table/table/admin-table.types';
+import { IGenreTableDataRow } from '@/components/ui/admin-table/admin-table.types';
 
 import { IGenreEditForm } from '../genre/genre-edit.types';
 

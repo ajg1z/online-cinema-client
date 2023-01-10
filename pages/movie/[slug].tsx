@@ -74,7 +74,7 @@ export const getStaticProps: GetStaticProps<IMoviePageProps> = async ({
       revalidate: 60,
     };
   } catch (e) {
-    console.log(errorCatch(e));
+    console.warn(errorCatch(e));
 
     return {
       notFound: true,

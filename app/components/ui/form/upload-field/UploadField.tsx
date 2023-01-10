@@ -32,9 +32,10 @@ const UploadField: FC<IUploadFieldProps> = ({
   };
 
   const nameFile = useMemo(() => {
-    if (!value) return 'Not selected file';
+    if (!value && !name) return 'Not selected file';
     return typeof value === 'string' ? value.split('/').slice().pop() : name;
   }, [name, value]);
+
 
   return (
     <>

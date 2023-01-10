@@ -68,7 +68,7 @@ export const getStaticProps: GetStaticProps<IGenrePageProps> = async ({
       revalidate: 60,
     };
   } catch (e) {
-    console.log(errorCatch(e));
+    console.warn(errorCatch(e));
 
     return {
       notFound: true,

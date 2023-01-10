@@ -56,11 +56,8 @@ export default function useUserEdit(setValue: UseFormSetValue<IUserEditForm>) {
 
   const onSubmit: SubmitHandler<IUserEditForm> = async (data) => {
     if (!initUser) return;
-    console.log('initUser',initUser);
-    console.log('data',data);
-    
-    const { isUpdate, payload } = compareObj<IUserUpdate>(data, initUser);
 
+    const { isUpdate, payload } = compareObj<IUserUpdate>(data, initUser);
 
     if (!isUpdate) {
       toastr.info(`Not changes`, `Change something`);

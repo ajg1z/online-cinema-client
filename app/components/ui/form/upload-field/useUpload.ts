@@ -15,40 +15,45 @@ export const useUpload = (onChange: (...e: any[]) => void, type: FileType) => {
 
   const uploadFile = useCallback(
     async (files: FileList, e?: ChangeEvent<HTMLInputElement>) => {
-      if (!files?.length) return;
+      try {
+        if (!files?.length) return;
 
-      const file = files[0];
+        const file = files[0];
 
-      const [fileType] = file.type.split(`/`);
+        const [fileType] = file.type.split(`/`);
 
-      if (fileType !== type) {
-        toastr.error(`Invalid file type`, getErrorTitle(type));
-      }
+        if (fileType !== type) {
+          toastr.error(`Invalid file type`, getErrorTitle(type));
+          return;
+        }
 
-      setIsLoading(true);
-      setName(file.name);
-      onChange(file);
+        setIsLoading(true);
+        setName(file.name);
+        onChange(file);
 
-      const reader = new FileReader();
+        const reader = new FileReader();
 
-      reader.readAsDataURL(file);
+        reader.readAsDataURL(file);
 
-      reader.onerror = () => {
+        reader.onerror = () => {
+          toastr.error(`Error in read file`, `Wrong or break file`);
+        };
+
+        reader.onloadstart = (e) => {
+          setFinishProgress(e.total);
+        };
+
+        reader.onprogress = (e) => {
+          setProgress(e.loaded);
+        };
+
+        reader.onload = () => {
+          setFileUrl(reader.result as string);
+          setIsLoading(false);
+        };
+      } catch (e) {
         toastr.error(`Error in read file`, `Wrong or break file`);
-      };
-
-      reader.onloadstart = (e) => {
-        setFinishProgress(e.total);
-      };
-
-      reader.onprogress = (e) => {
-        setProgress(e.loaded);
-      };
-
-      reader.onload = () => {
-        setFileUrl(reader.result as string);
-        setIsLoading(false);
-      };
+      }
     },
     [onChange, type],
   );

@@ -10,9 +10,9 @@ import { toastError } from '@/utils/toast-error';
 import { FileService } from '@/services/file.service';
 import MovieService from '@/services/movie/movie.service';
 
-import { IMovieEditForm } from '../movie/movie-edit.types';
+import { IMovieTableDataRow } from '@/components/ui/admin-table/admin-table.types';
 
-import { IMovieTableDataRow } from './../../../ui/admin-table/table/admin-table.types';
+import { IMovieEditForm } from '../movie/movie-edit.types';
 
 const useMovies = () => {
   const queryData = useQuery(`fetchMovies`, () => MovieService.getAll(), {
@@ -42,12 +42,9 @@ const useMovies = () => {
       onError: (error) => {
         toastError(error, `delete movie`);
       },
-
-      onSuccess: (response) => {
-        if (response.data.status) {
-          toastr.success(`Delete movie`, `delete was successful`);
-          queryData.refetch();
-        }
+      onSuccess: () => {
+        toastr.success(`Delete movie`, `delete was successful`);
+        queryData.refetch();
       },
     },
   );

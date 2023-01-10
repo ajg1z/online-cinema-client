@@ -60,7 +60,7 @@ export const getStaticProps: GetStaticProps<IHome> = async () => {
       revalidate: 60,
     };
   } catch (e) {
-    console.log(errorCatch(e));
+    console.warn(errorCatch(e));
 
     return {
       props: {

@@ -26,7 +26,7 @@ export const getStaticProps: GetStaticProps<{
       revalidate: 60,
     };
   } catch (e) {
-    console.log(e);
+    console.warn(e);
     return {
       notFound: true,
     };
