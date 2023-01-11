@@ -11,7 +11,7 @@ import { FileService } from '@/services/file.service';
 
 import { ActorService } from '../../../../services/actor-service/actor.service';
 
-import { IActorTableDataRow } from './../../../ui/admin-table/table/admin-table.types';
+import { IActorTableDataRow } from './../../../ui/admin-table/admin-table.types';
 import { IActorEditForm } from './../actor/actor-edit.types';
 
 const useActors = () => {

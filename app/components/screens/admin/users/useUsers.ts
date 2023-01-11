@@ -6,7 +6,7 @@ import { PAGES_URL } from '@/config/url.config';
 
 import { toastError } from '@/utils/toast-error';
 
-import { IUserTableDataRow } from '@/components/ui/admin-table/table/admin-table.types';
+import { IUserTableDataRow } from '@/components/ui/admin-table/admin-table.types';
 
 import { UserService } from '../../../../services/user/user.service';
 

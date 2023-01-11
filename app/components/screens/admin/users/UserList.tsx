@@ -1,8 +1,5 @@
 import { parse } from 'date-fns';
 import { ChangeEvent, useCallback, useMemo, useState } from 'react';
-import { Column } from 'react-table';
-
-import { PAGES_URL } from '@/config/url.config';
 
 import Meta from '@/utils/meta/Meta';
 

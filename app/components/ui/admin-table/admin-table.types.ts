@@ -54,6 +54,7 @@ export interface IUserTableDataRow {
   dateRegister: string;
   action: IActionCell;
   id: string;
+  isAdmin: boolean;
 }
 
 export interface IActorTableDataRow {
